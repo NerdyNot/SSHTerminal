@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",       // React JSX 처리
+    "target": "es6",           // 컴파일 타겟 ES6
+    "module": "esnext",        // 모듈 시스템
+    "strict": true,            // 엄격한 타입 검사
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "outDir": "./public/js"    // 컴파일된 파일이 저장될 디렉터리
+  },
+  "include": ["src/**/*"]
+}

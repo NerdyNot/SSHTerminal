@@ -1,0 +1,10 @@
+fastapi
+paramiko
+uvicorn
+websockets
+sqlalchemy
+python-jose
+bcrypt==4.0.1
+passlib[bcrypt]
+pymysql
+python-multipart

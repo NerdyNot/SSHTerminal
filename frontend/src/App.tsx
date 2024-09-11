@@ -8,6 +8,7 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import { Box, useMediaQuery, useTheme } from '@mui/material';
 import SshForm from './components/SshForm';
+import LogViewer from './components/LogViewer';
 import TerminalPage from './components/TerminalPage';
 
 const theme = createTheme();
@@ -57,6 +58,7 @@ const App: React.FC = () => {
                       <Routes>
                         <Route path="/" element={<MainPage />} />
                         <Route path="/page/ssh-form" element={<SshForm />} />
+                        <Route path="/page/logviewer" element={<LogViewer />} />
                       </Routes>
                     </Box>
                   </Box>

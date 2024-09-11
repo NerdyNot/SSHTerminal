@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Terminal } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
 import 'xterm/css/xterm.css';
@@ -12,6 +12,12 @@ const TerminalPage: React.FC = () => {
   const [statusMessage, setStatusMessage] = useState<string>('연결 대기 중...');
 
   useEffect(() => {
+    const userInfo = {
+      userid: localStorage.getItem('userid'),
+      username: localStorage.getItem('username'),
+      userdescription: localStorage.getItem('userdescription')
+    };
+
     const handleMessage = (event: MessageEvent) => {
       const { host, port, username, password } = event.data;
 
@@ -35,7 +41,13 @@ const TerminalPage: React.FC = () => {
       setWebSocket(ws);
 
       ws.onopen = () => {
-        ws.send(JSON.stringify({ host, port, username, password }));
+        ws.send(JSON.stringify({ 
+          host, 
+          port, 
+          username, 
+          password,
+          user_info: userInfo // user_info를 WebSocket 메시지에 포함
+        }));
         setStatusMessage('SSH 연결 성공!');
         xterm.current?.writeln(`서버: ${host}, 사용자: ${username}로 연결 성공!`);
       };
